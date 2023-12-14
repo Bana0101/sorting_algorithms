@@ -23,7 +23,7 @@ void bubble_sort(int *array, size_t size)
 				array[i] = array[i + 1];
 				array[i + 1] = swap;
 				for (j = 0; j < size; j++)
-					printf("%d, ",array[j]);
+					printf("%d, ", array[j]);
 				printf("\n");
 				flag = 1;
 				continue;
