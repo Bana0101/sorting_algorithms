@@ -12,6 +12,9 @@ void bubble_sort(int *array, size_t size)
 	size_t i;
 	int flag = 1, swap;
 
+	if (!array || !size)
+		return;
+
 	while (flag)
 	{
 		flag = 0;
@@ -27,7 +30,5 @@ void bubble_sort(int *array, size_t size)
 				continue;
 			}
 		}
-		if (flag == 0)
-			break;
 	}
 }
