@@ -1,9 +1,6 @@
 #include "sort.h"
 
 /**
- * insertion_sort_list - in ascending order using the Insertion sort algorithm
- * @list: the doubly linked list
- * Return: void
  */
 
 void insertion_sort_list(listint_t **list)
@@ -15,11 +12,18 @@ void insertion_sort_list(listint_t **list)
 	while (flag)
 	{
 		flag = 0;
-		current = *list;
-		while (current->next)
+		current = swaped;
+		while(current->next)
 		{
 			if (current->n > current->next->n)
-			{	swaped = current->next;
+			{
+				swaped = current->next;
+				while (current != NULL)
+				{
+					if (current->n < swaped->n)
+						break;
+					current = current->prev;
+				}
 				if (!swaped->next)
 					swaped->prev->next = NULL;
 				else
@@ -27,7 +31,7 @@ void insertion_sort_list(listint_t **list)
 					swaped->prev->next = swaped->next;
 					swaped->next->prev = swaped->prev;
 				}
-				if (!current->prev)
+				if (!current)
 				{
 					swaped->next = *list;
 					(*list)->prev = swaped;
@@ -36,10 +40,10 @@ void insertion_sort_list(listint_t **list)
 				}
 				else
 				{
-					current->prev->next = swaped;
-					swaped->prev = current->prev;
-					swaped->next = current;
-					current->prev = swaped;
+					swaped->next = current->next;
+					current->next->prev = swaped;
+					current->next = swaped;
+					swaped->prev = current;
 				}
 				print_list(*list);
 				flag = 1;
@@ -49,3 +53,13 @@ void insertion_sort_list(listint_t **list)
 		}
 	}
 }
+/*
+ * swaped->next = current->next;
+	
+				current->next->prev = swaped;
+				current->next = swaped;
+				swaped->prev = current;
+*/	
+
+
+
