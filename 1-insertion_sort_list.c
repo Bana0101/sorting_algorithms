@@ -5,21 +5,29 @@
 
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *current, *swaped;
-	size_t flag = 1;
+	listint_t *p = *list, *temp, *tmp;
 
-	while (flag)
+	if (list == NULL)
+		return;
+
+	while (p->next != NULL)
 	{
-		flag = 0;
-		current = *list;
-		while(current->next)
+		p = p->next;
+		temp = p;
+		while (p->prev != NULL && p->n < p->prev->n)
 		{
-			if (current->n > current->next->n)
-			{
-				swaped = current->next;
-				while (current->n > swaped->n && current->prev != NULL)
-					current = current->prev;
+			tmp = p->prev;
+			tmp->next = p->next;
+			if (p->next)
+				p->next->prev = tmp;
+			p->next = tmp;
 
-
-			}
+			p->prev = tmp->prev;
+			if (tmp->prev)
+				tmp->prev->next = p;
+			tmp->prev = p;
+			print_list(*list);
+		}
+		p = temp;
+	}
 }
