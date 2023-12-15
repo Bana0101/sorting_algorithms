@@ -11,7 +11,7 @@ void insertion_sort_list(listint_t **list)
 	listint_t *current, *swaped;
 	size_t flag = 1;
 
-	if (!(*list) || !list)
+	if (*list == NULL || list == NULL)
 		return;
 	swaped = *list;
 	while (flag)
