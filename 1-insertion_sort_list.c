@@ -11,10 +11,11 @@ void insertion_sort_list(listint_t **list)
 	listint_t *current, *swaped;
 	size_t flag = 1;
 
+	if (!(*list))
+		return;
 	swaped = *list;
 	while (flag)
-	{
-		flag = 0;
+	{	flag = 0;
 		current = *list;
 		while (current->next)
 		{
