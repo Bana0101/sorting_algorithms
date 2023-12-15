@@ -24,8 +24,7 @@ void insertion_sort_list(listint_t **list)
 				if (!swaped->next)
 					swaped->prev->next = NULL;
 				else
-				{
-					swaped->prev->next = swaped->next;
+				{	swaped->prev->next = swaped->next;
 					swaped->next->prev = swaped->prev;
 				}
 				if (!current->prev)
