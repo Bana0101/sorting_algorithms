@@ -12,7 +12,7 @@ void quick_sort(int *array, size_t size)
 	size_t flag = size - 1, s = 0, i, j;
 	int cmp, pivot;
 
-	if (!array || size == 0)
+	if (!array || size <= 0)
 		return;
 	for (i = 0; i <= size - 1; i++)
 	{
